@@ -2,7 +2,7 @@ import axios from "axios";
 import useValidate from "@vuelidate/core";
 // eslint-disable-next-line no-unused-vars
 import { required, email } from "@vuelidate/validators";
-// import { reactive, computed } from "vue";
+
 export default {
     name: 'SetInitial',
     setup() {
