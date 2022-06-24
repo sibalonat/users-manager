@@ -190,7 +190,8 @@ export default {
         async edituser(user) {
             let modalHidden = this.$refs.modal;
             // eslint-disable-next-line no-undef
-            $(modalHidden).modal('show')
+            $(modalHidden).modal('show');
+    
             this.method = 'put';
             this.action = `http://localhost:3000/users/${user.id}`;
             this.form.id = user.id;

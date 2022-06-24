@@ -3,7 +3,7 @@ import "bootstrap/dist/css/bootstrap.css";
 import { createApp } from 'vue'
 import App from './App.vue'
 import VueGoogleMaps from '@fawmi/vue-google-maps';
-window.$ = window.jQuery = require('jquery');
+
 
 const app = createApp(App);
 
