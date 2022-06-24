@@ -64,18 +64,6 @@ export default {
             },
         }
     },
-    mounted() {
-        // if (this.showLatLong === false) {            
-            this.$watch(
-                () => {
-                    return this.$refs.autocomplete;
-                },
-                (val) => {
-                    console.log(val);
-                }
-            );
-        // }
-    },
     async created() {
         await axios.get('http://localhost:3000/users')
             .then(response => {
