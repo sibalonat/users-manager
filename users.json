@@ -11,18 +11,6 @@
       "zip": "10001",
       "latitude": "10001987",
       "longitude": "10001987"
-    },
-    {
-      "id": 1,
-      "name": "Marin",
-      "username": "mnplus",
-      "email": "sibalonat@example.com",
-      "phone": "+3556767676",
-      "adresa": "Komuna Parisit",
-      "city": "Tirana",
-      "zip": "10001",
-      "latitude": "10001987",
-      "longitude": "10001987"
     }
   ]
 }
