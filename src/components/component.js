@@ -205,9 +205,6 @@ export default {
             this.form.longitude = user.longitude;
         },
         handleChange(event) {
-            // `event` implicitly has `any` type
-            // console.log(event.target.value)
-            console.log(event.target.value)
             if (event.target.value.length === 0) {
                 this.showContainer();
             }
