@@ -11,6 +11,18 @@
       "zip": "10001",
       "latitude": "10001987",
       "longitude": "10001987"
+    },
+    {
+      "id": 1,
+      "name": "Marin Nikolli",
+      "username": "m.nikolli",
+      "email": "sibalonat@gmail.com",
+      "phone": "+3556867197",
+      "adresa": "rr kjo",
+      "city": "Tirana",
+      "zip": "1001",
+      "latitude": "",
+      "longitude": ""
     }
   ]
 }
