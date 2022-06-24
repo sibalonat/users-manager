@@ -16,7 +16,6 @@ export default {
     data() {
         return {
             // v$: useValidate(),
-            totalcharacter: 0,
             count: 0,
             showLatLong: true,
             method: null,
@@ -136,8 +135,6 @@ export default {
                             latitude: '',
                             longitude: '',
                         };
-                        this.acting = null;
-                        this.inputet = null;
                     })
                     .catch((error) => {
                         console.log(error);
@@ -164,8 +161,6 @@ export default {
                             latitude: '',
                             longitude: '',
                         };
-                        this.acting = null;
-                        this.inputet = null;
                     })
                     .catch((error) => {
                         console.log(error);
