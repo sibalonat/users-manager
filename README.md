@@ -20,6 +20,8 @@ Kur ne shtojmë një element të ri, fushat e përdorura kanë të lidhura speci
 
 Përmes paketët Axios ne bëjmë request në CRUD të file-it users.json. Ama ndryshe nga sesi mund të implementohet zakonisht, këtë herë zgjidhja është është bërë për të pasur një metodë të vetëm që quhet submit, e cila gjendet tek metodat tek component.js. Aty behët thirrja me axios për post/update/delete. Duke qënë se jo të gjitha kanë të dhëna dhe duheshin rregulluar routes që të kishin një response specifike dhe rreguluar nëse ka të dhëna që na kthehen pas secilës reques, mënyra e shkrimit të këtij kodi është bërë më if statements, ama metodat ndryshojnë krejt në mënyrë dinamike. 
 
+
+
 Tek forma në pjesën ku duket forma, ka një @submit.prevent=[emri_metodës];
 
 Kemi një button, checkbox sipër adresës. Forma pa klikuar këtë button na lejon të shkruajmë të gjithë të dhenat e adresës vetë. Ama nëse duam disi ta automatizojmë si veprim, atëherë =farë mund të bëjmë është të klikojmë këtë checkbox, dhe aty ndodh dicka. E para përmes v-shoë ne shfaqim komponentin që na lejon të kemi fushën që do na japë mundësinë të lidhemi me Google Places dhe tjetra, është se na tregon dy fusha të tjera që më parë nuk dukeshin dhe ato janë latitude dhe longitude. Në momentin që kërkojmë një adresë, ta zëmë atë që unë testova vazhdimisht për shkak se isha dhe përtac, Rr 5 maji, në momentin që e zgjedhim atëherë ajo bën disa veprime njëpasnjëshme. Plotëson fushat, longitude dhe latitude me të dhënat që merr nga google dhe mandej dhe cytetin. Zip Code duhet ta shtoni vetë. 

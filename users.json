@@ -51,26 +51,38 @@
     {
       "id": 5,
       "name": "Marin Nikolli",
-      "username": "mnplus",
+      "username": "m.nikolli",
       "email": "sibalonat@gmail.com",
       "phone": "+3556867197",
-      "adresa": "rr kjo",
+      "adresa": "Rruga 5 Maji",
       "city": "Tirana",
       "zip": "1001",
-      "latitude": "",
-      "longitude": ""
+      "latitude": 19.8245588197085,
+      "longitude": 41.3409094197085
     },
     {
       "id": 6,
-      "name": "marin",
+      "name": "Marin Nikolli",
       "username": "m.nikolli",
-      "email": "kot@example.com",
-      "phone": "+355686739197",
-      "adresa": "rr kjo",
+      "email": "sibalonat@gmail.com",
+      "phone": "+3556867197",
+      "adresa": "Rruga 5 Maji",
       "city": "Tirana",
       "zip": "1001",
-      "latitude": "",
-      "longitude": ""
+      "latitude": 19.8245588197085,
+      "longitude": 41.3409094197085
+    },
+    {
+      "id": 7,
+      "name": "Marin Nikolli",
+      "username": "m.nikolli",
+      "email": "sibalonat@gmail.com",
+      "phone": "+3556867197",
+      "adresa": "Rruga 5 Maji",
+      "city": "Tirana",
+      "zip": "1001",
+      "latitude": 19.8245588197085,
+      "longitude": 41.3409094197085
     }
   ]
 }

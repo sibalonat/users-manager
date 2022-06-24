@@ -159,14 +159,17 @@
                         </div>
 
                         <div v-show="!showLatLong">
+                        <!-- @keypress.enter.prevent -->
+                        
                         <GMapAutocomplete 
                         placeholder="Write your address"
-                        @keypress.enter.prevent
                         class="form-control form-control-lg border-color shadow-none"
                         ref="autocomplete" 
+                        @change="handleChange"
                         @place_changed="setPlace"
                         >
                         </GMapAutocomplete>
+                       
                         </div>
                       </div>
                     </div>

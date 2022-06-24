@@ -1,16 +1,22 @@
 import axios from "axios";
 import useValidate from "@vuelidate/core";
 // eslint-disable-next-line no-unused-vars
-import { required, email } from "@vuelidate/validators";
+import {
+    required,
+    email
+} from "@vuelidate/validators";
 
 export default {
     name: 'SetInitial',
     setup() {
-        return { v$: useValidate() }
+        return {
+            v$: useValidate()
+        }
     },
     data() {
         return {
             // v$: useValidate(),
+            totalcharacter: 0,
             count: 0,
             showLatLong: true,
             method: null,
@@ -33,15 +39,42 @@ export default {
     validations() {
         return {
             form: {
-                name: { required },
-                username: { required },
-                email: { required, email  },
-                phone: { required },
-                adresa: { required },
-                city: { required },
-                zip: { required },
+                name: {
+                    required
+                },
+                username: {
+                    required
+                },
+                email: {
+                    required,
+                    email
+                },
+                phone: {
+                    required
+                },
+                adresa: {
+                    required
+                },
+                city: {
+                    required
+                },
+                zip: {
+                    required
+                },
             },
         }
+    },
+    mounted() {
+        // if (this.showLatLong === false) {            
+            this.$watch(
+                () => {
+                    return this.$refs.autocomplete;
+                },
+                (val) => {
+                    console.log(val);
+                }
+            );
+        // }
     },
     async created() {
         await axios.get('http://localhost:3000/users')
@@ -54,11 +87,21 @@ export default {
             })
     },
     watch: {
+        showLatLong: {
+            handler(value) {
+                console.log(value);
+                if (value === false) {
+                    this.showContainer()
+                }
+            },
+            immediate: true
+        },
         form: {
             handler(value) {
-                this.setPlace(value);                             
+                this.setPlace(value);
             },
-            deep: true
+            deep: true,
+            immediate: true
         }
     },
     methods: {
@@ -77,69 +120,70 @@ export default {
 
             if (this.method === 'delete') {
                 await axios({
-                    method: this.method,
-                    url: this.action,
-                })
-                .then(() => {
-                    this.fetch();
-                })
-                .catch((error) => {
-                    console.log(error);
-                });                     
-            } else if (this.method === 'put') { 
+                        method: this.method,
+                        url: this.action,
+                    })
+                    .then(() => {
+                        this.fetch();
+                    })
+                    .catch((error) => {
+                        console.log(error);
+                    });
+            } else if (this.method === 'put') {
                 await axios({
-                    method: this.method,
-                    url: this.action,
-                    data: this.form 
-                })
-                .then(() => {
-                    this.form = {
-                        id: '',
-                        name: '',
-                        username: '',
-                        email: '',
-                        phone: '',
-                        adresa: '',
-                        city: '',
-                        zip: '',
-                        latitude: '',
-                        longitude: '',
-                    };
-                    this.acting = null;
-                    this.inputet = null;
-                })
-                .catch((error) => {
-                    console.log(error);
-                }).finally(() => {
-                    this.fetch();
-                });
-            } else if (this.method === 'post') { 
+                        method: this.method,
+                        url: this.action,
+                        data: this.form
+                    })
+                    .then(() => {
+                        this.form = {
+                            id: '',
+                            name: '',
+                            username: '',
+                            email: '',
+                            phone: '',
+                            adresa: '',
+                            city: '',
+                            zip: '',
+                            latitude: '',
+                            longitude: '',
+                        };
+                        this.acting = null;
+                        this.inputet = null;
+                    })
+                    .catch((error) => {
+                        console.log(error);
+                    }).finally(() => {
+                        this.fetch();
+                    });
+            } else if (this.method === 'post') {
+                // console.log(this.v$.Validate());
                 await axios({
-                    method: this.method,
-                    url: this.action,
-                    data: this.form 
-                })
-                .then(() => {
-                    this.form = {
-                        id: '',
-                        name: '',
-                        username: '',
-                        email: '',
-                        phone: '',
-                        adresa: '',
-                        city: '',
-                        zip: '',
-                        latitude: '',
-                        longitude: '',
-                    };
-                    this.acting = null;
-                    this.inputet = null;
-                })
-                .catch((error) => {
-                    console.log(error);
-                }).finally(() => {
-                    this.fetch();
-                });
+                        method: this.method,
+                        url: this.action,
+                        data: this.form
+                    })
+                    .then(() => {
+                        this.form = {
+                            id: '',
+                            name: '',
+                            username: '',
+                            email: '',
+                            phone: '',
+                            adresa: '',
+                            city: '',
+                            zip: '',
+                            latitude: '',
+                            longitude: '',
+                        };
+                        this.acting = null;
+                        this.inputet = null;
+                    })
+                    .catch((error) => {
+                        console.log(error);
+                    }).finally(() => {
+                        this.fetch();
+                    });
             }
         },
         createuser() {
@@ -149,6 +193,7 @@ export default {
             this.method = 'post';
             this.action = 'http://localhost:3000/users';
         },
+
         async deleteuser(id) {
             this.method = 'delete';
             this.action = `http://localhost:3000/users/${id}`;
@@ -171,17 +216,30 @@ export default {
             this.form.latitude = user.latitude;
             this.form.longitude = user.longitude;
         },
+        handleChange(event) {
+            // `event` implicitly has `any` type
+            // console.log(event.target.value)
+            console.log(event.target.value)
+            if (event.target.value.length === 0) {
+                this.showContainer();
+            }
+        },
+        showContainer() {
+            let thisContainer = document.querySelector('.pac-container');
+            thisContainer.style.zIndex = '100000000'
+            thisContainer.style.display = 'block'
+        },
+        hideContainer() {
+            let thisContainer = document.querySelector('.pac-container');
+            thisContainer.style.zIndex = '10'
+            thisContainer.style.display = 'none'
+        },
         // eslint-disable-next-line no-unused-vars
         async setPlace(place) {
-            if (typeof place !== 'undefined') {                      
-                let thisContainer = document.querySelector('.pac-container');
-                thisContainer.style.zIndex = '100000000'
-                thisContainer.style.display = 'block'
-            }
-            if (typeof place.geometry !== 'undefined') {
-                let thisContainer = document.querySelector('.pac-container');
-                thisContainer.style.zIndex = '10'
-                thisContainer.style.display = 'none'
+            
+            if (place.geometry) {
+
+                this.hideContainer();
 
                 // eslint-disable-next-line no-undef
                 let latitude = place.geometry.viewport.Ra.lo
@@ -189,8 +247,9 @@ export default {
 
                 let city = place.vicinity;
                 // this data was optional
-                // let adresa = place.name;
+                let adresa = place.name;
                 // let country = place.address_components.slice(-1)[0].long_name;
+                this.form.adresa = adresa;
 
                 this.form.city = city;
                 this.form.latitude = latitude;
@@ -198,4 +257,4 @@ export default {
             }
         },
     }
-  }
+}
