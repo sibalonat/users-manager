@@ -112,6 +112,7 @@ export default {
                     })
                     .then(() => {
                         this.fetch();
+
                     })
                     .catch((error) => {
                         console.log(error);
@@ -171,6 +172,19 @@ export default {
         },
         createuser() {
             this.form.id = this.count + 1;
+
+            this.form = {
+                id: '',
+                name: '',
+                username: '',
+                email: '',
+                phone: '',
+                adresa: '',
+                city: '',
+                zip: '',
+                latitude: '',
+                longitude: '',
+            };
 
             // this.acting = true;
             this.method = 'post';
